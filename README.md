@@ -11,11 +11,20 @@ This project contains automated end-to-end tests using Playwright. It is structu
 ## Project Structure
 
 *   `tests/`: Contains the test specifications.
-*   `pages/`: Page Object Model implementations for interacting with web pages.
-*   `models/`: Data models used within the tests.
-*   `data/`: Test data.
+*   `pages/`: Page Object Model implementations (using composition).
+*   `panels/`: Reusable UI panels/components.
+*   `fixtures/`: Playwright fixtures for test setup and page object initialization.
+*   `models/`: TypeScript interfaces for data models.
+*   `data/`: Test data objects.
 *   `utils/`: Utility functions and helpers.
 *   `configs/`: Project configurations.
+
+## Architecture & Best Practices
+
+This project follows modern Playwright best practices:
+*   **Fixtures**: Page objects are initialized and provided via Playwright fixtures (`fixtures/pom.ts`), removing the need for manual instantiation in tests.
+*   **Composition over Inheritance**: Page objects do not extend a base class. Shared functionality is handled via composition or utilities.
+*   **Interfaces**: Data models are defined as TypeScript interfaces for better type safety and flexibility.
 
 ## Setup
 

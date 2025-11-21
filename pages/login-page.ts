@@ -1,14 +1,17 @@
 import { Page } from '@playwright/test';
-import { BasePage } from './base-page';
+
 import { User } from '../models/User';
 import { logger } from '../utils/logger';
 
 /**
  * Represents the login page and its functionalities.
  */
-export class LoginPage extends BasePage {
-  constructor(page: Page) {
-    super(page);
+export class LoginPage {
+  constructor(public page: Page) { }
+
+  async navigate(url: string) {
+    logger.info(`⏩ Navigating to ${url}`);
+    await this.page.goto(url);
   }
 
   // Locators

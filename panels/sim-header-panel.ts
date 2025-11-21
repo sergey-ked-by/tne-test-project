@@ -1,12 +1,10 @@
 import { Page, expect } from '@playwright/test';
-import { BasePage } from '../pages/base-page';
+
 import { logger } from '../utils/logger';
 import { config } from '../configs/config';
 
-export class SimHeaderPanel extends BasePage {
-  constructor(page: Page) {
-    super(page);
-  }
+export class SimHeaderPanel {
+  constructor(public page: Page) { }
 
   private userName = () => this.page.locator('div.user-name');
   private userRole = () => this.page.locator('div.user-role');

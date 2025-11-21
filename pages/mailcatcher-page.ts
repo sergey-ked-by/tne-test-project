@@ -2,11 +2,7 @@ import { Page, expect } from '@playwright/test';
 import { logger } from '../utils/logger';
 
 export class MailcatcherPage {
-  protected page: Page;
-
-  constructor(page: Page) {
-    this.page = page;
-  }
+  constructor(public page: Page) { }
 
   private emailRow = (email: string) => this.page.locator(`//tr[td[contains(text(), "${email}")]]`);
   private completeRegistrationLink = () => this.page.frameLocator('iframe').locator('a:has-text("Complete Registration")');

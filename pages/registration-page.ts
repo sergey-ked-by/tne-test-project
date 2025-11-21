@@ -1,5 +1,5 @@
 import { Page, expect } from '@playwright/test';
-import { BasePage } from './base-page';
+
 import { User } from '../models/User';
 import { logger } from '../utils/logger';
 import * as path from 'path';
@@ -8,10 +8,8 @@ import { config } from '../configs/config';
 /**
  * Represents the registration page and its functionalities.
  */
-export class RegistrationPage extends BasePage {
-  constructor(page: Page) {
-    super(page);
-  }
+export class RegistrationPage {
+  constructor(public page: Page) { }
 
   // Locators
   private avatarPencilIcon = () => this.page.locator('span[data-automation="pencil-span-layout-login"]');
@@ -41,7 +39,7 @@ export class RegistrationPage extends BasePage {
     logger.info("Specify password: *****");
     await this.passwordInput().focus();
     await this.passwordInput().fill(user.password);
-    
+
     logger.info("Clicking avatar edit icon");
     await this.avatarPencilIcon().click();
     logger.info("Waiting for avatar selection modal to appear");
